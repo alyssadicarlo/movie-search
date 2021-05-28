@@ -1,0 +1,20 @@
+* {
+    font-family: 'Poppins', sans-serif;
+}
+
+a, p, button, label, input {
+    font-size: 16px;
+}
+
+.root {
+    width: 80%;
+    margin: auto;
+}
+
+header {
+    text-align: center;
+}
+
+input {
+    width: 400px;
+}
