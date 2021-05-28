@@ -23,19 +23,24 @@ document.addEventListener("DOMContentLoaded", function () {
     function updateMovies(data) {
         movieContainer.innerHTML = "";
         const movieData = data.results;
+        console.log(movieData);
 
         movieData.forEach(function (movie) {
             const movieCardElement = document.createElement('div');
-            movieCardElement.classList.add("movieCard");
-
             const movieTitleElement = document.createElement('h2');
             const movieOverviewElement = document.createElement('p');
+            const moviePosterElement = document.createElement('img');
 
             movieTitleElement.innerText = movie.title;
             movieOverviewElement.innerText = movie.overview;
+            moviePosterElement.src = `http://image.tmdb.org/t/p/w500/${movie.poster_path}`;
+
+            movieCardElement.classList.add("movieCard");
+            moviePosterElement.classList.add("movieImage");
 
             movieCardElement.append(movieTitleElement);
             movieCardElement.append(movieOverviewElement);
+            movieCardElement.append(moviePosterElement);
 
             movieContainer.append(movieCardElement);
         });
