@@ -1,56 +1,83 @@
-* {
-    font-family: 'Poppins', sans-serif;
-}
-
-a, p, button, label, input {
-    font-size: 16px;
-}
-
-.root {
-    width: 80%;
-    margin: 100px auto;
-}
-
-header {
-    text-align: center;
-}
-
-.inputBar {
-    border: 1px solid black;
-    width: 400px;
-    height: 50px;
-    padding: 2px;
-    padding-left: 10px;
-    margin: auto;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    border-radius: 6px;
-    -webkit-border-radius: 6px;
-    -moz-border-radius: 6px;
-    -ms-border-radius: 6px;
-    -o-border-radius: 6px;
-}
-
-input {
-    width: 100%;
-    height: 100%;
-    border: none;
-}
-
-input:focus {
-    outline: none;
-}
-
-#searchButton {
-    cursor: pointer;
-    padding-right: 15px;
-}
 
 .movieContainer {
-    margin: 80px auto;
+  margin: 80px auto;
 }
 
 .movieImage {
-    width: 100px;
+  width: 100px;
+}
+
+* {
+  box-sizing: border-box;
+  font-size: 16px;
+}
+body {
+  background: white;
+  padding: 5px;
+  height: 100vh;
+  margin: 0;
+
+  font-family: 'Poppins', sans-serif;
+  font-size: 100%;
+
+  text-transform: uppercase;
+}
+
+.page-wrap {
+  background: white;
+  height: calc(100vh - 10px);
+  box-shadow: 0 0 3px rgba(black, 0.33);
+
+  display: grid;
+  grid-template-columns: minmax(10px, 1fr) minmax(10px, 3fr);
+  grid-template-rows: min-content min-content 1fr min-content;
+  gap: 1px;
+}
+
+.page-wrap * {
+  padding: 1rem;
+  text-align: center;
+}
+
+.page-header {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.page-sidebar {
+  grid-column: 1 / 2;
+  grid-row: 2 / 4;
+  background: #e1bee7;
+}
+.page-nav {
+  grid-column: 2 / 3;
+  background: #bbdefb;
+}
+.page-main {
+  grid-column: 2 / 3;
+  background: #dcedc8;
+}
+.page-footer {
+  grid-column: 1 / -1;
+  background: #ffecb3;
+}
+
+details p {
+  text-transform: none;
+  text-align: left;
+}
+
+
+@media (max-width: 600px) {
+  .page-wrap{
+    grid-template-columns: 100%;
+    grid-template-rows: auto;
+  }
+
+  .page-wrap * {
+    grid-column: 1 / -1 !important;
+    grid-row: auto !important;
+  }
 }
