@@ -135,4 +135,20 @@ details p {
     grid-column: 1 / -1 !important;
     grid-row: auto !important;
   }
+
+  .page-header {
+    flex-direction: column;
+  }
+
+  form {
+    width: 100%;
+  }
+
+  .page-main img {
+    width: 50%;
+  }
+
+  .page-sidebar {
+    text-align: center;
+  }
 }
