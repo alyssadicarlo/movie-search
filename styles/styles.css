@@ -115,14 +115,25 @@ input {
   -o-border-radius: 30px;
 }
 
-.page-footer {
-  grid-column: 1 / -1;
-  background: #ffecb3;
+.pagination {
+  grid-column: 2 / 3;
+  display: flex;
+  justify-content: space-between;
 }
 
-details p {
-  text-transform: none;
-  text-align: left;
+.page-footer {
+  grid-column: 1 / -1;
+  border-top: 1px solid black;
+}
+
+.page-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.page-footer * {
+  padding: 0;
 }
 
 @media (max-width: 600px) {
@@ -150,5 +161,9 @@ details p {
 
   .page-sidebar {
     text-align: center;
+  }
+
+  .page-footer {
+    flex-direction: column;
   }
 }
