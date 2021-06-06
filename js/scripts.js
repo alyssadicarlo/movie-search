@@ -11,6 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const nextPageButton = document.querySelector('#nextButton');
     const prevPageButton = document.querySelector('#prevButton');
     const currentPageElement = document.querySelector('#currentPage');
+    const mobileGenreSection = document.querySelector('#genreSelect');
 
     let currentPage = 1;
     let numberOfPages = 25;
