@@ -1,6 +1,6 @@
 <h1 align="center">Movie Search Tool</h1>
 
-<img align="center" src="https://raw.githubusercontent.com/alyssadicarlo/movie-search/main/video-player.svg">
+<img align="center" width=100 src="https://raw.githubusercontent.com/alyssadicarlo/movie-search/main/video-player.svg">
 
 <hr>
 <br>
