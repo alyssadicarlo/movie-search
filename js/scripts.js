@@ -107,10 +107,19 @@ document.addEventListener("DOMContentLoaded", function () {
         const genreList = data.results;
         
         genreList.forEach((movie) => {
+            const movieCard = document.createElement('div');
+            movieCard.classList.add('movie-card');
+
             const posterElement = document.createElement('img');
+            const titleElement = document.createElement('span');
+
             posterElement.src = `http://image.tmdb.org/t/p/w500/${movie.poster_path}`;
-            
-            genreListWrapper.append(posterElement);
+            titleElement.innerText = movie.title;
+
+            movieCard.append(posterElement);
+            movieCard.append(titleElement);
+
+            genreListWrapper.append(movieCard);
         });
 
         mainSection.append(genreListWrapper);
@@ -142,10 +151,19 @@ document.addEventListener("DOMContentLoaded", function () {
         mainSection.append(title);
 
         popularList.forEach((movie) => {
+            const movieCard = document.createElement('div');
+            movieCard.classList.add('movie-card');
+
             const posterElement = document.createElement('img');
+            const titleElement = document.createElement('span');
+
             posterElement.src = `http://image.tmdb.org/t/p/w500/${movie.poster_path}`;
-            
-            popularListWrapper.append(posterElement);
+            titleElement.innerText = movie.title;
+
+            movieCard.append(posterElement);
+            movieCard.append(titleElement);
+
+            popularListWrapper.append(movieCard);
         });
 
         mainSection.append(popularListWrapper);
@@ -200,12 +218,21 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     nextPageButton.addEventListener('click', () => {
-        console.log('clicked');
         if (currentGenreName === "popular") {
             currentPage += 1;
             fetchPopularMovies();
         } else {
             currentPage += 1;
+            fetchGenreMovies();
+        }
+    });
+
+    prevPageButton.addEventListener('click', () => {
+        if (currentGenreName === "popular") {
+            currentPage -= 1
+            fetchPopularMovies();
+        } else {
+            currentPage -= 1
             fetchGenreMovies();
         }
     });

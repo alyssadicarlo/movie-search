@@ -93,11 +93,17 @@ input {
   grid-column: 2 / 3;
 }
 
-.page-main * {
+.page-main > div {
   padding: 0;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+}
+
+.page-main .movie-card {
+  width: 25%;
+  padding: 1rem;
+  text-align: center;
 }
 
 .page-main > h1 {
@@ -105,8 +111,7 @@ input {
 }
 
 .page-main img {
-  width: 20%;
-  padding: 1rem;
+  width: 100%;
   border-radius: 30px;
   -webkit-border-radius: 30px;
   -moz-border-radius: 30px;
