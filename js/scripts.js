@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const categorySection = document.querySelector('#genres');
     const mainSection = document.querySelector('.page-main');
 
+    // Gets list of genres for side menu
     function fetchGenres() {
         fetch(
             'https://api.themoviedb.org/3/genre/movie/list?api_key=7dcf5fae32cc6d8cf133c74050d42657&language=en-US'
@@ -16,6 +17,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
+    // Updates side menu with list of genres
     function updateGenres(data) {
         const genreList = data.genres;
 
@@ -31,7 +33,6 @@ document.addEventListener("DOMContentLoaded", function () {
             genreLink.addEventListener('click', () => {
                 currentGenre = genre.name;
                 fetchGenreMovies();
-                updateGenreSection(genre.name);
             })
         });
     }
@@ -48,11 +49,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function updateGenreSection(data) {
         mainSection.innerHTML = "";
+        const genreListWrapper = document.createElement('div');
+
         const movieList = data.results;
 
         const genreElements = [...document.querySelectorAll('.genre')];
-
-        const genreElement = genreElements.find(genre => genre.innerText === 'Action');
+        const genreElement = genreElements.find(element => element.innerText === currentGenre);
         const genreId = parseInt(genreElement.id);
 
         const genreTitle = document.createElement('h2');
@@ -60,12 +62,23 @@ document.addEventListener("DOMContentLoaded", function () {
         
         mainSection.append(genreTitle);
 
-        const genreList = movieList.filter((movie) => {
-            movie.genre_ids.includes(genreId);
-        });
-        console.log(genreList);
+        let genreList = [];
 
-        // const genreList = movieList.filter(movie => movie.genre === 'Action');
+        movieList.forEach((movie) => {
+            if (movie.genre_ids.includes(genreId)) {
+                genreList.push(movie);
+            }
+        });
+        
+        genreList.forEach((movie) => {
+            const posterElement = document.createElement('img');
+            posterElement.src = `http://image.tmdb.org/t/p/w500/${movie.poster_path}`;
+            
+            genreListWrapper.append(posterElement);
+        });
+
+        mainSection.append(genreListWrapper);
+
     }
 
     function fetchPopularMovies() {
