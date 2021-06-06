@@ -1,12 +1,10 @@
-<h1 align="center">Movie Search Tool</h1>
-
-<img align="center" width=100 src="https://raw.githubusercontent.com/alyssadicarlo/movie-search/main/video-player.svg">
-
-<hr>
+<div style="text-align: center">
+    <img width=100 src="https://raw.githubusercontent.com/alyssadicarlo/movie-search/main/video-player.svg">
+    <h1>Movie Search Tool</h1>
+</div>
 <br>
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/8296891c-0343-42c1-aa8a-98a1e047b9ec/deploy-status)](https://app.netlify.com/sites/movie-search-326/deploys)
-![Netlify Status](https://img.shields.io/github/languages/count/alyssadicarlo/movie-search)
 
 <br>
 
