@@ -142,7 +142,7 @@ input {
 button {
   cursor: pointer;
   background-color: rgb(107, 177, 224);
-  border: 2px solid rgb(107, 177, 224);
+  border: 1px solid rgb(107, 177, 224);
   border-radius: 15px;
   -webkit-border-radius: 15px;
   -moz-border-radius: 15px;
@@ -150,7 +150,8 @@ button {
   -o-border-radius: 15px;
 }
 
-input {
+input, select {
+  border-width: 1px;
   border-radius: 15px;
   -webkit-border-radius: 15px;
   -moz-border-radius: 15px;
@@ -158,8 +159,17 @@ input {
   -o-border-radius: 15px;
 }
 
-input:focus {
+input:hover {
+  border: 1px solid rgb(107, 177, 224);
+}
+
+input:focus, select:focus {
+  border: 1px solid rgb(107, 177, 224);
   outline: none;
+}
+
+.mobile {
+  display: none;
 }
 
 @media (max-width: 768px) {
@@ -198,5 +208,13 @@ input:focus {
 
   .page-footer {
     flex-direction: column;
+  }
+
+  .mobile {
+    display: block;
+  }
+
+  .desktop {
+    display: none;
   }
 }

@@ -27,6 +27,7 @@ document.addEventListener("DOMContentLoaded", function () {
             return response.json();
         }).then((data) => {
             updateGenres(data);
+            updateMobileGenres(data);
         });
     }
 
@@ -59,6 +60,26 @@ document.addEventListener("DOMContentLoaded", function () {
                 fetchGenreMovies();
             })
         });
+    }
+
+    function updateMobileGenres(data) {
+        const genreList = data.genres;
+        const genreSelectElement = document.createElement('select');
+
+        genreList.forEach((genre) => {
+            const genreOption = document.createElement('option');
+            genreOption.id = genre.id;
+            genreOption.value = genre.name;
+            genreOption.innerText = genre.name;
+
+            genreSelectElement.append(genreOption);
+
+            genreOption.addEventListener('change', (event) => {
+                console.log(event);
+            })
+        });
+
+        mobileGenreSection.append(genreSelectElement);
     }
 
     function fetchGenreMovies() {
