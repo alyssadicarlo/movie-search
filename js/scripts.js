@@ -141,9 +141,8 @@ document.addEventListener("DOMContentLoaded", function () {
         ).then(function (response) {
             return response.json();
         }).then(function (data) {
-            console.log(data);
             updateMovies(data);
-        })
+        });
     }
 
     function updateMovies(data) {

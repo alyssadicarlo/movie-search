@@ -45,7 +45,6 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: rgb(107, 177, 224);
 }
 
 form {
@@ -138,6 +137,29 @@ input {
 
 .page-footer * {
   padding: 0;
+}
+
+button {
+  cursor: pointer;
+  background-color: rgb(107, 177, 224);
+  border: 2px solid rgb(107, 177, 224);
+  border-radius: 15px;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  -ms-border-radius: 15px;
+  -o-border-radius: 15px;
+}
+
+input {
+  border-radius: 15px;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  -ms-border-radius: 15px;
+  -o-border-radius: 15px;
+}
+
+input:focus {
+  outline: none;
 }
 
 @media (max-width: 768px) {
