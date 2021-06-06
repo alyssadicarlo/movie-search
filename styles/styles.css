@@ -140,6 +140,13 @@ input {
   padding: 0;
 }
 
+@media (max-width: 768px) {
+  .page-main img {
+    width: 33%;
+    height: 100%;
+  }
+}
+
 @media (max-width: 600px) {
   .page-wrap{
     grid-template-columns: 100%;
