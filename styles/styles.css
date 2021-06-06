@@ -100,7 +100,7 @@ input {
   flex-wrap: wrap;
 }
 
-.page-main .movie-card {
+.movie-card {
   width: 25%;
   padding: 1rem;
   text-align: center;
@@ -203,8 +203,17 @@ input:focus, select:focus {
     width: 100%;
   }
 
-  .page-main img {
+  .movie-card {
     width: 50%;
+  }
+
+  .page-main img{
+    padding: 0;
+    width: 100%;
+  }
+
+  .page-main span {
+    display: none;
   }
 
   .page-sidebar {

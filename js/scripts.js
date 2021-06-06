@@ -66,6 +66,12 @@ document.addEventListener("DOMContentLoaded", function () {
         const genreList = data.genres;
         const genreSelectElement = document.createElement('select');
 
+        const placeholderOption = document.createElement('option');
+        placeholderOption.value = "placeholder";
+        placeholderOption.innerText = "---Select a genre---";
+        placeholderOption.selected = true;
+        genreSelectElement.append(placeholderOption);
+
         genreList.forEach((genre) => {
             const genreOption = document.createElement('option');
             genreOption.id = genre.id;
@@ -73,13 +79,21 @@ document.addEventListener("DOMContentLoaded", function () {
             genreOption.innerText = genre.name;
 
             genreSelectElement.append(genreOption);
-
-            genreOption.addEventListener('change', (event) => {
-                console.log(event);
-            })
         });
 
         mobileGenreSection.append(genreSelectElement);
+
+        genreSelectElement.addEventListener('change', (event) => {
+            currentPage = 1
+            currentGenreName = event.target.value;
+
+            const genreElements = [...document.querySelectorAll('.genre')];
+            const genreElement = genreElements.find(element => element.innerText.toLowerCase() === currentGenreName.toLowerCase());
+            const genreId = parseInt(genreElement.id);
+            currentGenre = genreId;
+
+            fetchGenreMovies();
+        });
     }
 
     function fetchGenreMovies() {
