@@ -1,6 +1,6 @@
 <div style="text-align: center">
     <img width=100 src="https://raw.githubusercontent.com/alyssadicarlo/movie-search/main/video-player.svg">
-    <h1>Movie Search Tool</h1>
+    <h1>Movie Search</h1>
 </div>
 <br>
 
@@ -16,7 +16,7 @@ Web app using the TMDB API. Live site can be viewed at [movie-search-326.netlify
 
 function fetchMovie(movie) {
         fetch(
-            `https://api.themoviedb.org/3/search/movie?api_key=7dcf5fae32cc6d8cf133c74050d42657&language=en-US&query=${movie}&page=1&include_adult=false`
+            `https://api.themoviedb.org/3/search/movie?api_key=${api_key}&language=en-US&query=${movie}&page=1&include_adult=false`
         ).then(function (response) {
             return response.json();
         }).then(function (data) {
@@ -28,6 +28,7 @@ function fetchMovie(movie) {
 
 ## Features
 
+- [x] Responsive
 - [x] View popular movies
 - [ ] View now showing movies
 - [ ] View upcoming movies
