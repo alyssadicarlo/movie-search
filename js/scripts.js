@@ -2,16 +2,22 @@
 
 document.addEventListener("DOMContentLoaded", function () {
     let currentGenre = 35;
-    let currentGenreName = "comdey";
+    let currentGenreName = "popular";
     const searchButton = document.querySelector('#searchButton');
     const categorySection = document.querySelector('#genres');
     const mainSection = document.querySelector('.page-main');
     const genreListWrapper = document.createElement('div');
     const popularLink = document.querySelector('#popularLink');
+    const nextPageButton = document.querySelector('#nextButton');
+    const prevPageButton = document.querySelector('#prevButton');
+    const currentPageElement = document.querySelector('#currentPage');
 
     let currentPage = 1;
     let numberOfPages = 25;
 
+    function updateCurrentPage() {
+        currentPageElement.innerText = currentPage;
+    }
     // Gets list of genres for side menu
     function fetchGenres() {
         fetch(
@@ -37,6 +43,7 @@ document.addEventListener("DOMContentLoaded", function () {
             categorySection.append(genreLink);
 
             genreLink.addEventListener('click', () => {
+                currentPage = 1
                 currentGenreName = genre.name;
                 const genreElements = [...document.querySelectorAll('.genre')];
                 const genreElement = genreElements.find(element => element.innerText.toLowerCase() === currentGenreName.toLowerCase());
@@ -54,6 +61,8 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function fetchGenreMovies() {
+        updateCurrentPage();
+
         fetch(
             `https://api.themoviedb.org/3/discover/movie?api_key=7dcf5fae32cc6d8cf133c74050d42657&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${currentPage}&with_genres=${currentGenre}&with_watch_monetization_types=flatrate`
         ).then((response) => {
@@ -87,11 +96,14 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function fetchPopularMovies() {
+        updateCurrentPage();
+
         fetch(
-            'https://api.themoviedb.org/3/movie/popular?api_key=7dcf5fae32cc6d8cf133c74050d42657&language=en-US&page=1'
+            `https://api.themoviedb.org/3/movie/popular?api_key=7dcf5fae32cc6d8cf133c74050d42657&language=en-US&page=${currentPage}`
         ).then((response) => {
             return response.json();
         }).then((data) => {
+            numberOfPages = data.total_pages;
             updatePopularMovies(data);
         });
     }
@@ -160,9 +172,25 @@ document.addEventListener("DOMContentLoaded", function () {
 
     }
 
-    popularLink.addEventListener('click', fetchPopularMovies);
+    popularLink.addEventListener('click', () => {
+        currentGenreName = "popular";
+        currentPage = 1
+        fetchPopularMovies();
+    });
+
+    nextPageButton.addEventListener('click', () => {
+        console.log('clicked');
+        if (currentGenreName === "popular") {
+            currentPage += 1;
+            fetchPopularMovies();
+        } else {
+            currentPage += 1;
+            fetchGenreMovies();
+        }
+    });
 
     fetchGenres();
     fetchPopularMovies();
+    updateCurrentPage();
 
 });

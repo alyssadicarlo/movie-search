@@ -121,6 +121,10 @@ input {
   justify-content: space-between;
 }
 
+.pagination button {
+  margin: 0 1rem;
+}
+
 .page-footer {
   grid-column: 1 / -1;
   border-top: 1px solid black;
