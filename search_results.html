@@ -3,46 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Movie Search</title>
+    <title>Search Results</title>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="stylesheet" href="styles/normalize.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles/styles.css">
+    <link ref="stylesheet" href="styles/search.css">
     <link rel="icon" href="video-player.svg" sizes="any" type="image/svg+xml">
     <link rel="apple-touch-icon" type="image/svg+xml" sizes="any" href="video-player.svg">
-  </head>
+</head>
 <body>
     <div class="page-wrap">
         <header class="page-header">
-          <img width=100 src="video-player.svg">
-          <form class="flex" action="search_results.html" method="GET">
+            <img width=100 src="video-player.svg">
+            <form class="flex" action="search_results.html" method="GET">
             <input name="movie" id="movieSearch" placeholder="Search for a movie">
             <button id="searchButton" type="submit">Search</button>
-          </form>
+            </form>
         </header>
         <nav class="page-nav">
-          <a class="navLink active" id="popularLink">Popular</a>
-          <a class="navLink" id="nowPlayingLink">Now Playing</a>
+            <span><strong>Search Results</strong></span>
         </nav>
         <aside id="genres" class="page-sidebar desktop">
-          <h1>Genres</h1>
+            <h1>Genres</h1>
         </aside>
         <aside id="genreSelect" class="page-sidebar mobile">
-          <h1>Genres</h1>
+            <h1>Genres</h1>
         </aside>
         <main class="page-main">
-          
+            
         </main>
-        <div class="pagination">
-          <button type="button" id="prevButton">Prev</button>
-          <span id="currentPage"></span>
-          <button type="button" id="nextButton">Next</button>
-        </div>
         <footer class="page-footer">
-          <p>Made with ❤️ by Alyssa DiCarlo</p>
-          <a href="https://www.buymeacoffee.com/alyssadicarlo" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 30px !important;width: 108.5px !important;" ></a>
+            <p>Made with ❤️ by Alyssa DiCarlo</p>
+            <a href="https://www.buymeacoffee.com/alyssadicarlo" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 30px !important;width: 108.5px !important;" ></a>
         </footer>
     </div>
-    <script src="js/scripts.js"></script>
+    <script src="js/search.js"></script>
 </body>
 </html>
