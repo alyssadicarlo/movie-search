@@ -13,12 +13,16 @@
 }
 body {
   background: white;
-  padding: 5px;
   height: 100vh;
   margin: 0;
 
   font-family: 'Poppins', sans-serif;
   font-size: 100%;
+}
+
+.active {
+  color: #f15e75;
+  font-weight: bold;
 }
 
 .page-wrap {
@@ -39,8 +43,17 @@ body {
 .page-header {
   grid-column: 1 / -1;
   display: flex;
-  
+  justify-content: space-between;
   align-items: center;
+  background-color: rgb(107, 177, 224);
+}
+
+form {
+  width:50%;
+}
+
+input {
+  width: calc(100% - 100px);
 }
 
 .page-sidebar {
@@ -49,30 +62,36 @@ body {
 }
 
 .page-sidebar p {
-  margin: 2px 0;
+  margin: 5px 0;
   padding: 0 1rem;
+  cursor: pointer;
 }
+
+.page-sidebar p:hover {
+  color: #f15e75;
+}
+
 .page-sidebar p > a {
   padding: 0;
 }
 
+.page-sidebar > h1 {
+  margin: 0;
+  padding: 0 0 1rem 0;
+}
+
 .page-nav {
   grid-column: 2 / 3;
-  background: #bbdefb;
+  border-bottom: 1px solid black;
 }
 
-.page-nav form {
-  display: flex;
-  flex-direction: row;
-}
-
-.page-nav input {
-  width: 100%;
+.page-nav a:hover {
+  cursor: pointer;
+  color: #f15e75;
 }
 
 .page-main {
   grid-column: 2 / 3;
-  background: #dcedc8;
 }
 
 .page-main * {
@@ -82,9 +101,18 @@ body {
   flex-wrap: wrap;
 }
 
+.page-main > h1 {
+  padding-left: 1rem;
+}
+
 .page-main img {
   width: 20%;
   padding: 1rem;
+  border-radius: 30px;
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
+  -ms-border-radius: 30px;
+  -o-border-radius: 30px;
 }
 
 .page-footer {

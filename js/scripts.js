@@ -1,10 +1,16 @@
 'use strict';
 
 document.addEventListener("DOMContentLoaded", function () {
-    let currentGenre = "Comedy";
+    let currentGenre = 35;
+    let currentGenreName = "comdey";
     const searchButton = document.querySelector('#searchButton');
     const categorySection = document.querySelector('#genres');
     const mainSection = document.querySelector('.page-main');
+    const genreListWrapper = document.createElement('div');
+    const popularLink = document.querySelector('#popularLink');
+
+    let currentPage = 1;
+    let numberOfPages = 25;
 
     // Gets list of genres for side menu
     function fetchGenres() {
@@ -31,7 +37,17 @@ document.addEventListener("DOMContentLoaded", function () {
             categorySection.append(genreLink);
 
             genreLink.addEventListener('click', () => {
-                currentGenre = genre.name;
+                currentGenreName = genre.name;
+                const genreElements = [...document.querySelectorAll('.genre')];
+                const genreElement = genreElements.find(element => element.innerText.toLowerCase() === currentGenreName.toLowerCase());
+                
+                genreElements.forEach((element) => {
+                    element.classList.remove('active');
+                });
+                genreElement.classList.add('active');
+                
+                const genreId = parseInt(genreElement.id);
+                currentGenre = genreId;
                 fetchGenreMovies();
             })
         });
@@ -39,36 +55,25 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function fetchGenreMovies() {
         fetch(
-            'https://api.themoviedb.org/3/movie/popular?api_key=7dcf5fae32cc6d8cf133c74050d42657&language=en-US'
+            `https://api.themoviedb.org/3/discover/movie?api_key=7dcf5fae32cc6d8cf133c74050d42657&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${currentPage}&with_genres=${currentGenre}&with_watch_monetization_types=flatrate`
         ).then((response) => {
             return response.json();
         }).then((data) => {
+            numberOfPages = data.total_pages;
             updateGenreSection(data);
+            // update pagination
         })
     }
 
     function updateGenreSection(data) {
         mainSection.innerHTML = "";
-        const genreListWrapper = document.createElement('div');
+        genreListWrapper.innerHTML = "";
 
-        const movieList = data.results;
-
-        const genreElements = [...document.querySelectorAll('.genre')];
-        const genreElement = genreElements.find(element => element.innerText === currentGenre);
-        const genreId = parseInt(genreElement.id);
-
-        const genreTitle = document.createElement('h2');
-        genreTitle.innerText = currentGenre;
-        
+        const genreTitle = document.createElement('h1');
+        genreTitle.innerText =`Popular ${currentGenreName} Movies`;
         mainSection.append(genreTitle);
 
-        let genreList = [];
-
-        movieList.forEach((movie) => {
-            if (movie.genre_ids.includes(genreId)) {
-                genreList.push(movie);
-            }
-        });
+        const genreList = data.results;
         
         genreList.forEach((movie) => {
             const posterElement = document.createElement('img');
@@ -97,8 +102,8 @@ document.addEventListener("DOMContentLoaded", function () {
         const popularListWrapper = document.createElement('div');
 
         const popularList = data.results;
-        const title = document.createElement('h2');
-        title.innerText = "Popular Movies";
+        const title = document.createElement('h1');
+        title.innerText = "All Popular Movies";
 
         mainSection.append(title);
 
@@ -154,6 +159,8 @@ document.addEventListener("DOMContentLoaded", function () {
         });
 
     }
+
+    popularLink.addEventListener('click', fetchPopularMovies);
 
     fetchGenres();
     fetchPopularMovies();
